@@ -37,3 +37,29 @@ class Vacuna(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.animal.nombre}"
+    
+class Veterinario(models.Model):
+    nombre = models.CharField(max_length=100)
+    especialidad = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=9)
+    horario = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+class Cita(models.Model):
+    ESTADO_CHOICES = [
+        ('pendiente', 'Pendiente'),
+        ('atendida', 'Atendida'),
+        ('cancelada', 'Cancelada'),
+    ]
+    fecha = models.DateField()
+    hora = models.TimeField()
+    motivo = models.TextField()
+    observaciones = models.TextField(blank=True)
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    veterinario = models.ForeignKey(Veterinario, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Cita {self.fecha} - {self.animal.nombre}"
