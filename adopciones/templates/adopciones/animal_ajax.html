@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Animales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">🐾 Veterinaria Adopciones</a>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h2>Buscar Animales</h2>
+        <div class="mb-3">
+            <select id="filtroEspecie" class="form-select">
+                <option value="">Todos</option>
+                <option value="perro">Perros</option>
+                <option value="gato">Gatos</option>
+            </select>
+        </div>
+        <div id="resultado" class="row"></div>
+    </div>
+    
+    <script>
+        function cargarAnimales(especie = '') {
+            fetch('/adopciones/api/')
+                .then(response => response.json())
+                .then(data => {
+                    if (especie) {
+                        data = data.filter(a => a.especie === especie);
+                    }
+                    const contenedor = document.getElementById('resultado');
+                    contenedor.innerHTML = '';
+                    data.forEach(animal => {
+                        contenedor.innerHTML += `
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${animal.nombre}</h5>
+                                        <p>${animal.especie} - ${animal.raza}</p>
+                                        <p>${animal.descripcion}</p>
+                                        <span class="badge bg-success">${animal.estado}</span>
+                                    </div>
+                                </div>
+                            </div>`;
+                    });
+                });
+        }
+    
+        document.getElementById('filtroEspecie').addEventListener('change', function() {
+            cargarAnimales(this.value);
+        });
+    
+        cargarAnimales();
+    </script>  
+</body>
+</html>
