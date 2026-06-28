@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">🐾 Veterinaria Adopciones</a>
+            <a class="navbar-brand" href="{% url 'adopciones:animal_list' %}">🐾 Veterinaria Adopciones</a>
         </div>
     </nav>
     <div class="container mt-4">
@@ -19,11 +19,10 @@
                 <form method="post">
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Sí, borrar</button>
-                    <a href="{% url 'animal_list' %}" class="btn btn-secondary">Cancelar</a>
+                    <a href="{% url 'adopciones:animal_list' %}" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
         </div>
     </div>
-    </body> 
 </body>
 </html>

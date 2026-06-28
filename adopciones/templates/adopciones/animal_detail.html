@@ -9,7 +9,7 @@
 <body>
     <nav class="navbar navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">🐾 Veterinaria Adopciones</a>
+            <a class="navbar-brand" href="{% url 'adopciones:animal_list' %}">🐾 Veterinaria Adopciones</a>
         </div>
     </nav>
     <div class="container mt-4">
@@ -24,7 +24,9 @@
                 <p><strong>Edad:</strong> {{ animal.edad }} años</p>
                 <p><strong>Estado:</strong> {{ animal.estado }}</p>
                 <p><strong>Descripción:</strong> {{ animal.descripcion }}</p>
-                <a href="{% url 'animal_list' %}" class="btn btn-secondary">Volver</a>
+                <a href="{% url 'adopciones:animal_list' %}" class="btn btn-secondary">Volver</a>
+                <a href="{% url 'adopciones:animal_update' animal.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'adopciones:animal_delete' animal.pk %}" class="btn btn-danger">Borrar</a>
             </div>
         </div>
     </div>

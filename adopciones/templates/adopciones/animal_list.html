@@ -15,6 +15,7 @@
     <div class="container mt-4">
         <h2>Animales disponibles</h2>
         <div class="row">
+            <a href="{% url 'adopciones:animal_create' %}" class="btn btn-success mb-3">+ Agregar animal</a>
             {% for animal in animales %}
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -25,7 +26,7 @@
                         <h5 class="card-title">{{ animal.nombre }}</h5>
                         <p class="card-text">{{ animal.especie }} - {{ animal.raza }}</p>
                         <p class="card-text">{{ animal.descripcion }}</p>
-                        <a href="{% url 'animal_detail' animal.pk %}" class="btn btn-primary">Ver más</a>
+                        <a href="{% url 'adopciones:animal_detail' animal.pk %}" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>
