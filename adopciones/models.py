@@ -11,22 +11,43 @@ class Dueno(models.Model):
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
 
+    class Meta:
+        verbose_name = "Dueño"
+        verbose_name_plural = "Dueños"
+
+
+class Veterinario(models.Model):
+    nombre = models.CharField(max_length=100)
+    especialidad = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=9)
+    horario = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Veterinario"
+        verbose_name_plural = "Veterinarios"
+
+
 class Animal(models.Model):
     ESTADO_CHOICES = [
         ('disponible', 'Disponible'),
         ('adoptado', 'Adoptado'),
+        ('en_tratamiento', 'En tratamiento'),
     ]
     nombre = models.CharField(max_length=100)
     especie = models.CharField(max_length=50)
     raza = models.CharField(max_length=50)
     edad = models.IntegerField()
-    foto = models.ImageField(upload_to='animales/')
+    foto = models.ImageField(upload_to='animales/', blank=True, null=True)
     descripcion = models.TextField()
     estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='disponible')
     dueno = models.ForeignKey(Dueno, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.nombre
+
 
 class Vacuna(models.Model):
     nombre = models.CharField(max_length=100)
@@ -37,15 +58,7 @@ class Vacuna(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.animal.nombre}"
-    
-class Veterinario(models.Model):
-    nombre = models.CharField(max_length=100)
-    especialidad = models.CharField(max_length=100)
-    telefono = models.CharField(max_length=9)
-    horario = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.nombre
 
 class Cita(models.Model):
     ESTADO_CHOICES = [
@@ -63,3 +76,7 @@ class Cita(models.Model):
 
     def __str__(self):
         return f"Cita {self.fecha} - {self.animal.nombre}"
+
+    class Meta:
+        verbose_name = "Cita"
+        verbose_name_plural = "Citas"
