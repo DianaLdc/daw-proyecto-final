@@ -1,0 +1,117 @@
+.hero {
+  background: linear-gradient(rgba(0,102,204,0.7), rgba(0,82,163,0.7)), 
+              url(https://images.unsplash.com/photo-1587300411107-ec28081a9122?w=1200) center/cover;
+  color: white;
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.btn-red {
+  background: #ff4444;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.btn-red:hover {
+  background: #cc0000;
+}
+
+.why-us {
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.why-us img {
+  flex: 1;
+  min-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.why-us-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.why-us-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.why-us-text p {
+  color: #555;
+  line-height: 1.8;
+}
+
+.services {
+  background: #f5ede0;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.services-grid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.service-item {
+  max-width: 200px;
+}
+
+.service-item .icon {
+  font-size: 3rem;
+}
+
+.service-item p {
+  color: #555;
+}
+
+.momentos {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.momentos h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.momentos-subtitulo {
+  color: #0066cc;
+  margin-bottom: 2rem;
+}
+
+.momentos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.momentos-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}

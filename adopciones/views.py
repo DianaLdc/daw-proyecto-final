@@ -40,5 +40,17 @@ def animal_update(request, pk):
     return render(request, 'adopciones/animal_form.html', {'form': form})
 
 def animal_api(request):
-    animales = Animal.objects.all().values('id', 'nombre', 'especie', 'raza', 'edad', 'descripcion', 'estado')
-    return JsonResponse(list(animales), safe=False)
+    animales = Animal.objects.all()
+    data = []
+    for animal in animales:
+        data.append({
+            'id': animal.id,
+            'nombre': animal.nombre,
+            'especie': animal.especie,
+            'raza': animal.raza,
+            'edad': animal.edad,
+            'descripcion': animal.descripcion,
+            'estado': animal.estado,
+            'foto': request.build_absolute_uri(animal.foto.url) if animal.foto else None,
+        })
+    return JsonResponse(data, safe=False)
