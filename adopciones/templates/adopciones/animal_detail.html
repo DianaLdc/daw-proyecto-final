@@ -1,34 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ animal.nombre }}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'adopciones:animal_list' %}">🐾 Veterinaria Adopciones</a>
-        </div>
-    </nav>
-    <div class="container mt-4">
+{% extends 'adopciones/base.html' %}
+
+{% block title %}{{ animal.nombre }} - Veterinaria Patitas{% endblock %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'adopciones:animal_list' %}" class="text-success">🐾 Animales</a>
+        </li>
+        <li class="breadcrumb-item active">{{ animal.nombre }}</li>
+    </ol>
+</nav>
+
+<div class="row g-4">
+
+    <!-- FOTO -->
+    <div class="col-md-5">
         <div class="card">
             {% if animal.foto %}
-            <img src="{{ animal.foto.url }}" class="card-img-top" alt="{{ animal.nombre }}">
+                <img src="{{ animal.foto.url }}" class="card-img-top" alt="{{ animal.nombre }}"
+                     style="height: 350px; object-fit: cover; border-radius: 12px;">
+            {% else %}
+                <div class="text-center py-5 bg-light" style="border-radius: 12px;">
+                    <span style="font-size: 120px;">🐾</span>
+                    <p class="text-muted mt-2">Sin foto disponible</p>
+                </div>
             {% endif %}
-            <div class="card-body">
-                <h3 class="card-title">{{ animal.nombre }}</h3>
-                <p><strong>Especie:</strong> {{ animal.especie }}</p>
-                <p><strong>Raza:</strong> {{ animal.raza }}</p>
-                <p><strong>Edad:</strong> {{ animal.edad }} años</p>
-                <p><strong>Estado:</strong> {{ animal.estado }}</p>
-                <p><strong>Descripción:</strong> {{ animal.descripcion }}</p>
-                <a href="{% url 'adopciones:animal_list' %}" class="btn btn-secondary">Volver</a>
-                <a href="{% url 'adopciones:animal_update' animal.pk %}" class="btn btn-warning">Editar</a>
-                <a href="{% url 'adopciones:animal_delete' animal.pk %}" class="btn btn-danger">Borrar</a>
+        </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="col-md-7">
+        <div class="card p-4">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+                <h2 class="fw-bold text-success mb-0">{{ animal.nombre }}</h2>
+                {% if animal.estado == 'disponible' %}
+                    <span class="badge bg-success fs-6">✅ Disponible</span>
+                {% elif animal.estado == 'adoptado' %}
+                    <span class="badge bg-primary fs-6">🏠 Adoptado</span>
+                {% else %}
+                    <span class="badge bg-warning text-dark fs-6">🏥 En tratamiento</span>
+                {% endif %}
+            </div>
+
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td class="fw-semibold text-muted"><i class="bi bi-tag"></i> Especie</td>
+                        <td>{{ animal.especie }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-semibold text-muted"><i class="bi bi-bookmark"></i> Raza</td>
+                        <td>{{ animal.raza }}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-semibold text-muted"><i class="bi bi-calendar"></i> Edad</td>
+                        <td>{{ animal.edad }} año(s)</td>
+                    </tr>
+                    {% if animal.dueno %}
+                    <tr>
+                        <td class="fw-semibold text-muted"><i class="bi bi-person"></i> Dueño</td>
+                        <td>{{ animal.dueno }}</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+
+            <div class="mt-2">
+                <p class="fw-semibold text-muted mb-1"><i class="bi bi-chat-text"></i> Descripción</p>
+                <p class="text-dark">{{ animal.descripcion }}</p>
+            </div>
+
+            <!-- BOTONES -->
+            <div class="d-flex gap-2 mt-3 flex-wrap">
+                <a href="{% url 'adopciones:animal_list' %}" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver
+                </a>
+                <a href="{% url 'adopciones:animal_update' animal.pk %}" class="btn btn-warning">
+                    <i class="bi bi-pencil"></i> Editar
+                </a>
+                <a href="{% url 'adopciones:animal_delete' animal.pk %}" class="btn btn-danger">
+                    <i class="bi bi-trash"></i> Eliminar
+                </a>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+</div>
+
+{% endblock %}
