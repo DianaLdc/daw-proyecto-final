@@ -13,7 +13,7 @@
             <a href="{% url 'adopciones:animal_list' %}" class="text-success">🐾 Animales</a>
         </li>
         <li class="breadcrumb-item active">
-            {% if form.instance.pk %}Editar{{ form.instance.nombre }}{% else %}Registrar Animal{% endif %}
+            {% if form.instance.pk %}Editar {{ form.instance.nombre }}{% else %}Registrar Animal{% endif %}
         </li>
     </ol>
 </nav>
@@ -42,30 +42,10 @@
                         {% endif %}
                     </label>
 
-                    {% if field.field.widget.input_type == 'select' %}
-                        <select name="{{ field.html_name }}" class="form-select {% if field.errors %}is-invalid{% endif %}">
-                            {% for value, label in field.field.choices %}
-                                <option value="{{ value }}" {% if field.value == value %}selected{% endif %}>
-                                    {{ label }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    {% elif field.field.widget.input_type == 'file' %}
-                        <input type="file" name="{{ field.html_name }}"
-                               class="form-control {% if field.errors %}is-invalid{% endif %}">
-                        {% if form.instance.foto %}
-                            <small class="text-muted">Foto actual: {{ form.instance.foto }}</small>
-                        {% endif %}
-                    {% else %}
-                        <input type="{{ field.field.widget.input_type }}"
-                               name="{{ field.html_name }}"
-                               value="{{ field.value|default:'' }}"
-                               class="form-control {% if field.errors %}is-invalid{% endif %}"
-                               {% if field.field.required %}required{% endif %}>
-                    {% endif %}
+                    {{ field }}
 
                     {% if field.errors %}
-                        <div class="invalid-feedback d-block">
+                        <div class="text-danger mt-1">
                             {% for error in field.errors %}
                                 <small><i class="bi bi-exclamation-circle"></i> {{ error }}</small>
                             {% endfor %}
