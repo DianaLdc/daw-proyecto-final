@@ -1,37 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animales en Adopción</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="#">🐾 Veterinaria Adopciones</a>
+{% extends 'adopciones/base.html' %}
+
+{% block title %}Animales en Adopción{% endblock %}
+
+{% block content %}
+
+<!-- ENCABEZADO -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-success">🐾 Animales en Adopción</h2>
+        <p class="text-muted mb-0">Encuentra a tu compañero ideal</p>
+    </div>
+    <a href="{% url 'adopciones:animal_create' %}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Registrar Animal
+    </a>
+</div>
+
+<!-- FILTRO POR ESPECIE -->
+<div class="card mb-4 p-3">
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <label class="fw-semibold"><i class="bi bi-funnel"></i> Filtrar por especie:</label>
         </div>
-    </nav>
-    <div class="container mt-4">
-        <h2>Animales disponibles</h2>
-        <div class="row">
-            <a href="{% url 'adopciones:animal_create' %}" class="btn btn-success mb-3">+ Agregar animal</a>
-            {% for animal in animales %}
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    {% if animal.foto %}
-                    <img src="{{ animal.foto.url }}" class="card-img-top" alt="{{ animal.nombre }}">
-                    {% endif %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ animal.nombre }}</h5>
-                        <p class="card-text">{{ animal.especie }} - {{ animal.raza }}</p>
-                        <p class="card-text">{{ animal.descripcion }}</p>
-                        <a href="{% url 'adopciones:animal_detail' animal.pk %}" class="btn btn-primary">Ver más</a>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="col-auto">
+            <select id="filtroEspecie" class="form-select form-select-sm">
+                <option value="">Todos</option>
+                <option value="Perro">🐶 Perro</option>
+                <option value="Gato">🐱 Gato</option>
+                <option value="Ave">🐦 Ave</option>
+                <option value="Conejo">🐰 Conejo</option>
+                <option value="Otro">🐾 Otro</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button onclick="filtrarAnimales()" class="btn btn-success btn-sm">
+                Buscar
+            </button>
+            <button onclick="limpiarFiltro()" class="btn btn-outline-secondary btn-sm">
+                Limpiar
+            </button>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+<!-- TARJETAS DE ANIMALES -->
+<div class="row g-4" id="listaAnimales">
+    {% for animal in animales %}
+    <div class="col-md-4 animal-card" data-especie="{{ animal.especie }}">
+        <div class="card h-100">
+            {% if animal.foto %}
+                <img src="{{ animal.foto.url }}" class="card-img-top" alt="{{ animal.nombre }}"
+                     style="height: 200px; object-fit: cover; border-radius: 12px 12px 0 0;">
+            {% else %}
+                <div class="text-center py-4 bg-light" style="border-radius: 12px 12px 0 0;">
+                    <span style="font-size: 80px;">🐾</span>
+                </div>
+            {% endif %}
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h5 class="card-title fw-bold mb-0">{{ animal.nombre }}</h5>
+                    {% if animal.estado == 'disponible' %}
+                        <span class="badge bg-success">Disponible</span>
+                    {% elif animal.estado == 'adoptado' %}
+                        <span class="badge bg-primary">Adoptado</span>
+                    {% else %}
+                        <span class="badge bg-warning text-dark">En tratamiento</span>
+                    {% endif %}
+                </div>
+                <p class="text-muted small mb-1">
+                    <i class="bi bi-tag"></i> {{ animal.especie }} — {{ animal.raza }}
+                </p>
+                <p class="text-muted small mb-2">
+                    <i class="bi bi-calendar"></i> {{ animal.edad }} año(s)
+                </p>
+                <p class="card-text small">{{ animal.descripcion|truncatechars:80 }}</p>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+                <a href="{% url 'adopciones:animal_detail' animal.pk %}" class="btn btn-success btn-sm w-100">
+                    <i class="bi bi-eye"></i> Ver detalle
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <span style="font-size: 60px;">🐾</span>
+        <p class="text-muted mt-3">No hay animales registrados aún.</p>
+        <a href="{% url 'adopciones:animal_create' %}" class="btn btn-success">Registrar el primero</a>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- SCRIPT FILTRO AJAX -->
+<script>
+function filtrarAnimales() {
+    const especie = document.getElementById('filtroEspecie').value.toLowerCase();
+    const tarjetas = document.querySelectorAll('.animal-card');
+    tarjetas.forEach(card => {
+        const especieCard = card.dataset.especie.toLowerCase();
+        if (!especie || especieCard.includes(especie)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function limpiarFiltro() {
+    document.getElementById('filtroEspecie').value = '';
+    document.querySelectorAll('.animal-card').forEach(card => {
+        card.style.display = 'block';
+    });
+}
+</script>
+
+{% endblock %}
