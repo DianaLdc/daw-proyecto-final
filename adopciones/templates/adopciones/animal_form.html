@@ -1,37 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'adopciones:animal_list' %}">🐾 Veterinaria Adopciones</a>
-        </div>
-    </nav>
-    <div class="container mt-4">
-        <div class="card">
-            <div class="card-body">
-                <h3>Registrar Animal</h3>
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                    <div class="mb-3">
-                        <label class="form-label"><strong>{{ field.label }}</strong></label>
-                        {{ field }}
-                        {% if field.errors %}
-                        <div class="text-danger">{{ field.errors }}</div>
+{% extends 'adopciones/base.html' %}
+
+{% block title %}
+    {% if form.instance.pk %}Editar{% else %}Registrar{% endif %} Animal - Veterinaria Patitas
+{% endblock %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{% url 'adopciones:animal_list' %}" class="text-success">🐾 Animales</a>
+        </li>
+        <li class="breadcrumb-item active">
+            {% if form.instance.pk %}Editar{{ form.instance.nombre }}{% else %}Registrar Animal{% endif %}
+        </li>
+    </ol>
+</nav>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+
+            <h3 class="fw-bold text-success mb-4">
+                {% if form.instance.pk %}
+                    <i class="bi bi-pencil"></i> Editar Animal
+                {% else %}
+                    <i class="bi bi-plus-circle"></i> Registrar Nuevo Animal
+                {% endif %}
+            </h3>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">
+                        {{ field.label }}
+                        {% if field.field.required %}
+                            <span class="text-danger">*</span>
                         {% endif %}
-                    </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                    <a href="{% url 'adopciones:animal_list' %}" class="btn btn-secondary">Cancelar</a>
-                </form>
-            </div>
+                    </label>
+
+                    {% if field.field.widget.input_type == 'select' %}
+                        <select name="{{ field.html_name }}" class="form-select {% if field.errors %}is-invalid{% endif %}">
+                            {% for value, label in field.field.choices %}
+                                <option value="{{ value }}" {% if field.value == value %}selected{% endif %}>
+                                    {{ label }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    {% elif field.field.widget.input_type == 'file' %}
+                        <input type="file" name="{{ field.html_name }}"
+                               class="form-control {% if field.errors %}is-invalid{% endif %}">
+                        {% if form.instance.foto %}
+                            <small class="text-muted">Foto actual: {{ form.instance.foto }}</small>
+                        {% endif %}
+                    {% else %}
+                        <input type="{{ field.field.widget.input_type }}"
+                               name="{{ field.html_name }}"
+                               value="{{ field.value|default:'' }}"
+                               class="form-control {% if field.errors %}is-invalid{% endif %}"
+                               {% if field.field.required %}required{% endif %}>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="invalid-feedback d-block">
+                            {% for error in field.errors %}
+                                <small><i class="bi bi-exclamation-circle"></i> {{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    {% if field.help_text %}
+                        <small class="text-muted">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <!-- BOTONES -->
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-check-circle"></i>
+                        {% if form.instance.pk %}Guardar Cambios{% else %}Registrar Animal{% endif %}
+                    </button>
+                    <a href="{% url 'adopciones:animal_list' %}" class="btn btn-outline-secondary">
+                        <i class="bi bi-x-circle"></i> Cancelar
+                    </a>
+                </div>
+
+            </form>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+{% endblock %}
