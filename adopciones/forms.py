@@ -58,3 +58,52 @@ class AnimalForm(forms.ModelForm):
         if any(char.isdigit() for char in nombre):
             raise forms.ValidationError("El nombre no puede contener números")
         return nombre
+
+from .models import Dueno, SolicitudAdopcion
+
+class DuenoForm(forms.ModelForm):
+    class Meta:
+        model = Dueno
+        fields = ['nombre', 'apellido', 'dni', 'telefono', 'email', 'direccion']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre'}),
+            'apellido': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apellido'}),
+            'dni': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '12345678'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '987654321'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'correo@email.com'}),
+            'direccion': forms.Textarea(attrs={'class': 'form-control', 'rows': 2, 'placeholder': 'Direccion completa'}),
+        }
+
+    def clean_dni(self):
+        dni = self.cleaned_data.get('dni')
+        if not dni.isdigit() or len(dni) != 8:
+            raise forms.ValidationError("El DNI debe tener exactamente 8 numeros")
+        return dni
+
+    def clean_telefono(self):
+        telefono = self.cleaned_data.get('telefono')
+        if not telefono.isdigit() or len(telefono) != 9:
+            raise forms.ValidationError("El telefono debe tener exactamente 9 numeros")
+        return telefono
+
+
+class SolicitudAdopcionForm(forms.ModelForm):
+    class Meta:
+        model = SolicitudAdopcion
+        fields = ['nombre', 'dni', 'telefono', 'email', 'direccion', 
+                  'tipo_vivienda', 'tiene_jardin', 'otros_animales', 
+                  'horas_en_casa', 'experiencia', 'animal']
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre completo'}),
+            'dni': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '12345678'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '987654321'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'correo@email.com'}),
+            'direccion': forms.Textarea(attrs={'class': 'form-control', 'rows': 2}),
+            'tipo_vivienda': forms.Select(attrs={'class': 'form-select'}),
+            'tiene_jardin': forms.Select(attrs={'class': 'form-select'}),
+            'otros_animales': forms.Select(attrs={'class': 'form-select'}),
+            'horas_en_casa': forms.NumberInput(attrs={'class': 'form-control', 'min': 0, 'max': 24}),
+            'experiencia': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 
+                'placeholder': 'Describe tu experiencia con animales...'}),
+            'animal': forms.Select(attrs={'class': 'form-select'}),
+        }

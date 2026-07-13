@@ -80,3 +80,33 @@ class Cita(models.Model):
     class Meta:
         verbose_name = "Cita"
         verbose_name_plural = "Citas"
+
+class SolicitudAdopcion(models.Model):
+    TIPO_VIVIENDA_CHOICES = [
+        ('casa', 'Casa'),
+        ('departamento', 'Departamento'),
+        ('otro', 'Otro'),
+    ]
+    SI_NO_CHOICES = [
+        ('si', 'Si'),
+        ('no', 'No'),
+    ]
+    nombre = models.CharField(max_length=200)
+    dni = models.CharField(max_length=8)
+    telefono = models.CharField(max_length=9)
+    email = models.EmailField()
+    direccion = models.TextField()
+    tipo_vivienda = models.CharField(max_length=20, choices=TIPO_VIVIENDA_CHOICES)
+    tiene_jardin = models.CharField(max_length=3, choices=SI_NO_CHOICES)
+    otros_animales = models.CharField(max_length=3, choices=SI_NO_CHOICES)
+    horas_en_casa = models.IntegerField()
+    experiencia = models.TextField()
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    fecha_solicitud = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre} - {self.animal.nombre}"
+
+    class Meta:
+        verbose_name = "Solicitud de Adopcion"
+        verbose_name_plural = "Solicitudes de Adopcion"

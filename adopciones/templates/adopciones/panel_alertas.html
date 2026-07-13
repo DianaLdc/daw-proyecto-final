@@ -1,0 +1,58 @@
+{% extends 'adopciones/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Panel de Alertas — Vacunas Proximas</h2>
+    <p class="text-muted">Mascotas con vacuna en los proximos 7 dias</p>
+
+    {% if vacunas %}
+    <table class="table table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th>Mascota</th>
+                <th>Vacuna</th>
+                <th>Fecha proxima dosis</th>
+                <th>Dueno</th>
+                <th>Telefono</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vacuna in vacunas %}
+            <tr>
+                <td>{{ vacuna.animal.nombre }}</td>
+                <td>{{ vacuna.nombre }}</td>
+                <td>{{ vacuna.proxima_dosis }}</td>
+                <td>
+                    {% if vacuna.animal.dueno %}
+                        {{ vacuna.animal.dueno.nombre }} {{ vacuna.animal.dueno.apellido }}
+                    {% else %}
+                        Sin dueno
+                    {% endif %}
+                </td>
+                <td>
+                    {% if vacuna.animal.dueno %}
+                        {{ vacuna.animal.dueno.telefono }}
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+                <td>
+                    {% if vacuna.animal.dueno %}
+                    <a href="https://wa.me/51{{ vacuna.animal.dueno.telefono }}?text=Hola+{{ vacuna.animal.dueno.nombre }},+le+recordamos+que+{{ vacuna.animal.nombre }}+tiene+su+vacuna+{{ vacuna.nombre }}+el+{{ vacuna.proxima_dosis }}." 
+                       target="_blank" class="btn btn-success btn-sm">
+                        Enviar WhatsApp
+                    </a>
+                    {% else %}
+                        —
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-info">No hay vacunas proximas en los siguientes 7 dias.</div>
+    {% endif %}
+</div>
+{% endblock %}
