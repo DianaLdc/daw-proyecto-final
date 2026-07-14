@@ -26,11 +26,104 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Notificación Flotante */
+.notificacion-flotante {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+  font-weight: 600;
+  z-index: 1000;
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Header Superior con Carrito */
+.tienda-header-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Badge del Carrito */
+.carrito-badge {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.carrito-badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(59, 130, 246, 0.5);
+}
+
+.carrito-badge svg {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+
+.carrito-badge .cantidad {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* Header */
 .tienda-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   animation: fadeInDown 0.6s ease-out;
+  flex: 1;
 }
 
 .tienda-header h1 {
@@ -48,6 +141,36 @@
   font-size: 1.1rem;
   color: var(--text-light);
   margin: 0;
+}
+
+/* Buscador */
+.buscador-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.buscador-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.buscador-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  transform: translateY(-2px);
+}
+
+.buscador-input::placeholder {
+  color: #9ca3af;
 }
 
 /* Filtros */
@@ -262,6 +385,114 @@
   height: 18px;
 }
 
+/* Contador de Resultados */
+.contador-resultados {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.contador-resultados strong {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Rating */
+.rating-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.rating-container .estrella {
+  color: #d1d5db;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.rating-container .estrella.llena {
+  color: #fbbf24;
+  text-shadow: 0 0 2px rgba(251, 191, 36, 0.5);
+}
+
+.rating-texto {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-left: 0.25rem;
+}
+
+.rating-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.9rem;
+}
+
+.rating-badge svg {
+  width: 16px;
+  height: 16px;
+  color: #fbbf24;
+}
+
+/* Banner de Información */
+.banner-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border);
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.banner-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-light) 0%, #f0fdf4 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  transition: all 0.3s ease;
+}
+
+.banner-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+.banner-item .banner-icon {
+  font-size: 2.5rem;
+  min-width: 3rem;
+}
+
+.banner-item strong {
+  display: block;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.banner-item p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
 /* Animaciones */
 @keyframes fadeInDown {
   from {
@@ -291,12 +522,32 @@
     padding: 1.5rem 1rem;
   }
 
+  .tienda-header-superior {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .carrito-badge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .carrito-badge svg {
+    width: 24px;
+    height: 24px;
+  }
+
   .tienda-header h1 {
     font-size: 1.8rem;
   }
 
   .tienda-header p {
     font-size: 1rem;
+  }
+
+  .buscador-input {
+    max-width: 100%;
   }
 
   .filtros-container {
@@ -333,6 +584,10 @@
   .producto-precio {
     font-size: 1.1rem;
   }
+
+  .banner-info {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
@@ -363,6 +618,17 @@
 
   .btn-detalle {
     width: 100%;
+  }
+
+  .banner-item {
+    padding: 1rem;
+  }
+
+  .notificacion-flotante {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: 90vw;
   }
 }
 
