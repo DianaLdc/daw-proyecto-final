@@ -141,7 +141,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Toallitas Húmedas Limpiadoras",
     precio: "S/. 12.00",
     descripcion: "Pack de 50 toallitas biodegradables para limpiar patas y hocico.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMfczBB05XNdpDurEF2vIJKWH-Su6Qm4V5-AXB8Eq2fX2YVIXu68IRnA0C&s=10",
     categoria: "higiene"
   },
   {
@@ -157,7 +157,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Cortaúñas Profesional",
     precio: "S/. 45.00",
     descripcion: "Cortaúñas de acero inoxidable con seguro y lima incluida.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/afa/afa51066/y/14.jpg",
     categoria: "higiene"
   },
   {
@@ -165,7 +165,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Spray Desodorizante Mascotas",
     precio: "S/. 18.00",
     descripcion: "Spray neutralizador de olores con aroma natural.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMFiBjaWpxJ30O7QOBQrocrUJokoMIVBU8prJkjmYYUA&s=10",
     categoria: "higiene"
   },
   
@@ -175,7 +175,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Correa Extensible Premium",
     precio: "S/. 45.00",
     descripcion: "Correa extensible de 5m con manija ergonómica para paseos cómodos.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI-lpBz2ZBpUA0ip2ckTLkzgiJEo0cxkDXKUJUo0xPr5P46efY2lFUtgE&s=10",
     categoria: "accesorios"
   },
   {
@@ -191,7 +191,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Arnés de Seguridad Ajustable",
     precio: "S/. 55.00",
     descripcion: "Arnés reforzado con cinturones reflectantes para mayor seguridad.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjEkR0ZiKvePFeNKczVKxdgk12zFBdCYmKTWVf2Prk-7-WaN40sZ-W_Y8&s=10",
     categoria: "accesorios"
   },
   {
@@ -207,7 +207,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Comedero Automático con Temporizador",
     precio: "S/. 120.00",
     descripcion: "Comedero inteligente que dosifica alimento en horarios programados.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_83MFNvUixx4-ltHKmh-BShFLWz8CkZkW8q_0BSQIY2QhEC_uyCX5efk&s=10",
     categoria: "accesorios"
   },
   {
@@ -223,7 +223,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Bebedero Automático con Filtro",
     precio: "S/. 65.00",
     descripcion: "Bebedero de circulación con filtro para agua fresca y limpia.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://http2.mlstatic.com/D_NQ_NP_848794-MPE82278484530_022025-O.webp",
     categoria: "accesorios"
   },
   
@@ -233,7 +233,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Vitaminas Masticables Perros",
     precio: "S/. 35.00",
     descripcion: "Suplemento vitamínico completo con sabor a carne.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdCi5hfQr77OIeXO8_bMgQesPkhv9Vx1t5ZRzW9uol8gGdS5kNr86GaAW-&s=10",
     categoria: "suplementos"
   },
   {
@@ -241,7 +241,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Omega 3 para Pelaje Brillante",
     precio: "S/. 42.00",
     descripcion: "Suplemento de ácidos grasos para pelaje y piel saludables.",
-    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    imagen: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/nor/nor51502/l/77.jpg",
     categoria: "suplementos"
   },
   {
@@ -249,7 +249,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Glucosamina para Articulaciones",
     precio: "S/. 55.00",
     descripcion: "Suplemento para mantener articulaciones y huesos fuertes.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/jrw/jrw19021/y/69.jpg",
     categoria: "suplementos"
   },
   {
@@ -257,7 +257,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Probióticos Digestivos",
     precio: "S/. 38.00",
     descripcion: "Probióticos para mejorar la digestión y la salud intestinal.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL5dt_Tg92d2jciUVV8Yaies7mS55Y6IrpWKGFyzclsuO2coWUt4BBMIvD&s=10",
     categoria: "suplementos"
   },
   {
@@ -265,7 +265,7 @@ export const PRODUCTOS_MOCK = [
     nombre: "Calcio y Fósforo Crecimiento",
     precio: "S/. 48.00",
     descripcion: "Suplemento mineral para fortalecer huesos en cachorros.",
-    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0e02cBQmu8NjtwZTdaA7iKjfDpNCvy3uQvIesl7VWqw&s=10",
     categoria: "suplementos"
   },
   {
