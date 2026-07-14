@@ -123,3 +123,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Login
+LOGIN_URL = '/adopciones/api/login/'
+LOGIN_REDIRECT_URL = '/adopciones/'
+# Redireccion de login
+LOGIN_URL = '/admin/login/'
