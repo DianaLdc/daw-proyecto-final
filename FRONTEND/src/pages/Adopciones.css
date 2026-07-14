@@ -7,6 +7,7 @@
 .adopciones h2 {
   text-align: center;
   margin-bottom: 1rem;
+  color: #4a0080;
 }
 
 .filtros {
@@ -20,20 +21,20 @@
 .filtros button {
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
-  border: 2px solid #0066cc;
+  border: 2px solid #4a0080;
   background: white;
-  color: #0066cc;
+  color: pin;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .filtros button.active {
-  background: #0066cc;
+  background: #4a0080;
   color: white;
 }
 
 .filtros button:hover {
-  background: #0066cc;
+  background: #4a0080;
   color: white;
 }
 
@@ -47,8 +48,9 @@
   background: white;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(74, 0, 128, 0.1);
   transition: transform 0.3s;
+  border: 1px solid #f0d0ff;
 }
 
 .animal-card:hover {
@@ -66,7 +68,7 @@
 }
 
 .animal-card-body h3 {
-  color: #0066cc;
+  color: #4a0080;
   margin-bottom: 0.5rem;
 }
 
@@ -77,6 +79,24 @@
 
 .no-animales {
   text-align: center;
-  color: #666;
+  color: #888;
   padding: 2rem;
+}
+
+.btn-adoptar {
+  width: 100%;
+  margin-top: 0.8rem;
+  background: linear-gradient(135deg,  rgb(221, 126, 255), #cc00ff);
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: opacity 0.3s;
+}
+
+.btn-adoptar:hover {
+  opacity: 0.85;
 }

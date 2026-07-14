@@ -123,6 +123,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 ]
+CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Login
+LOGIN_URL = '/admin/login/'
+LOGIN_REDIRECT_URL = '/adopciones/'

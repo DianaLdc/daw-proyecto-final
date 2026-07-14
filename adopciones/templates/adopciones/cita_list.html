@@ -1,0 +1,67 @@
+{% extends 'adopciones/base.html' %}
+
+{% block title %}Lista de Citas - Veterinaria Patitas{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-success">📅 Citas Médicas</h2>
+        <p class="text-muted mb-0">Gestión de citas del sistema</p>
+    </div>
+    <a href="{% url 'adopciones:cita_create' %}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Nueva Cita
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th>Animal</th>
+                    <th>Veterinario</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Motivo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cita in citas %}
+                <tr>
+                    <td>{{ cita.animal.nombre }}</td>
+                    <td>{{ cita.veterinario.nombre }}</td>
+                    <td>{{ cita.fecha }}</td>
+                    <td>{{ cita.hora }}</td>
+                    <td>{{ cita.motivo|truncatechars:40 }}</td>
+                    <td>
+                        {% if cita.estado == 'pendiente' %}
+                            <span class="badge bg-warning text-dark">Pendiente</span>
+                        {% elif cita.estado == 'atendida' %}
+                            <span class="badge bg-success">Atendida</span>
+                        {% else %}
+                            <span class="badge bg-danger">Cancelada</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'adopciones:cita_update' cita.pk %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="{% url 'adopciones:cita_delete' cita.pk %}" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted py-4">No hay citas registradas</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

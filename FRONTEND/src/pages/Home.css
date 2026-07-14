@@ -1,6 +1,6 @@
 .hero {
-  background: linear-gradient(rgba(0,102,204,0.7), rgba(0,82,163,0.7)), 
-              url(https://images.unsplash.com/photo-1587300411107-ec28081a9122?w=1200) center/cover;
+  background: linear-gradient(rgba(90, 60, 130, 0.65), rgba(90, 60, 130, 0.65)),
+              url(https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=1200&q=80) center/cover;
   color: white;
   padding: 8rem 2rem;
   text-align: center;
@@ -17,17 +17,18 @@
 }
 
 .btn-red {
-  background: #ff4444;
+  background: #8e5bd6;
   color: white;
   padding: 1rem 2rem;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  transition: background 0.3s;
 }
 
 .btn-red:hover {
-  background: #cc0000;
+  background: #7345b8;
 }
 
 .why-us {
@@ -36,6 +37,7 @@
   padding: 4rem 2rem;
   gap: 2rem;
   flex-wrap: wrap;
+  background: white;
 }
 
 .why-us img {
@@ -53,6 +55,7 @@
 .why-us-text h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #4a3466;
 }
 
 .why-us-text p {
@@ -60,44 +63,203 @@
   line-height: 1.8;
 }
 
-.services {
-  background: #f5ede0;
+/* Tienda Virtual - Carrusel */
+.tienda-seccion {
   padding: 4rem 2rem;
+  background: #faf8fc;
   text-align: center;
 }
 
-.services-grid {
+.tienda-seccion h2 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #4a3466;
+}
+
+.tienda-seccion .subtitulo {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.carrusel-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carrusel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0.5rem;
+  flex: 1;
+}
+
+.carrusel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carrusel-track::-webkit-scrollbar-thumb {
+  background: #c9b8dc;
+  border-radius: 10px;
+}
+
+.producto-card {
+  min-width: 220px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(74, 0, 128, 0.06);
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.producto-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.producto-card-body {
+  padding: 1rem;
+}
+
+.producto-card-body h4 {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #4a3466;
+}
+
+.producto-card-body .precio {
+  color: #8e5bd6;
+  font-weight: bold;
+}
+
+.carrusel-btn {
+  background: #6b4b91;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.carrusel-btn:hover {
+  background: #543a75;
+}
+
+.tienda-seccion .btn-red {
   margin-top: 2rem;
 }
 
-.service-item {
-  max-width: 200px;
+/* Nuestra Sede */
+.sede-seccion {
+  background: white;
+  padding: 4rem 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.service-item .icon {
-  font-size: 3rem;
+.sede-info {
+  flex: 1;
+  min-width: 280px;
 }
 
-.service-item p {
-  color: #555;
+.sede-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4a3466;
 }
 
+.sede-dato {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.sede-mapa {
+  flex: 1;
+  min-width: 280px;
+}
+
+.sede-mapa iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* Albergues Aliados */
+.albergues-seccion {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #faf8fc;
+}
+
+.albergues-seccion h2 {
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  color: #4a3466;
+}
+
+.albergues-seccion .subtitulo {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.albergues-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.albergue-card {
+  background: white;
+  border: 1px solid #e5dcee;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(74, 0, 128, 0.05);
+}
+
+.albergue-card h4 {
+  margin-bottom: 0.5rem;
+  color: #4a3466;
+}
+
+.albergue-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Momentos Aurora */
 .momentos {
   padding: 4rem 2rem;
   text-align: center;
+  background: white;
 }
 
 .momentos h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #4a3466;
 }
 
 .momentos-subtitulo {
-  color: #0066cc;
+  color: #8e5bd6;
   margin-bottom: 2rem;
 }
 

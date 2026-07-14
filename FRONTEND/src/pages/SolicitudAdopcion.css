@@ -1,0 +1,100 @@
+.solicitud-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.solicitud-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 2rem;
+}
+
+.solicitud-card h2 {
+  color: #0066cc;
+  margin-bottom: 0.3rem;
+  text-align: center;
+}
+
+.solicitud-subtitulo {
+  text-align: center;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.solicitud-animal-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f0f7ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.solicitud-animal-info img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.solicitud-form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.solicitud-form input,
+.solicitud-form select,
+.solicitud-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.solicitud-form textarea {
+  resize: vertical;
+}
+
+.solicitud-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.solicitud-row > div {
+  flex: 1;
+}
+
+.solicitud-btn {
+  width: 100%;
+  background: pink;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+}
+
+.solicitud-btn:hover {
+  background: #1e7e34;
+}
+
+.solicitud-error {
+  background: #fee;
+  color: #c00;
+  padding: 0.6rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  text-align: center;
+}

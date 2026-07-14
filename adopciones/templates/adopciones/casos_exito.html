@@ -1,0 +1,32 @@
+{% extends 'adopciones/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Casos de Éxito</h2>
+    <p class="text-muted">Animales que encontraron un hogar</p>
+
+    {% if animales %}
+    <div class="row">
+        {% for animal in animales %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if animal.foto %}
+                <img src="{{ animal.foto.url }}" class="card-img-top" alt="{{ animal.nombre }}" style="height: 200px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ animal.nombre }}</h5>
+                    <p class="card-text text-muted">{{ animal.especie }} — {{ animal.raza }}</p>
+                    <p class="card-text">{{ animal.descripcion }}</p>
+                    {% if animal.dueno %}
+                    <p class="card-text"><small class="text-success">Adoptado por {{ animal.dueno.nombre }} {{ animal.dueno.apellido }}</small></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">Aun no hay casos de exito registrados.</div>
+    {% endif %}
+</div>
+{% endblock %}

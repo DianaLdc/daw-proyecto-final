@@ -1,0 +1,149 @@
+{% extends 'adopciones/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Panel de Control</h2>
+    <p class="text-muted">Resumen del día</p>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Citas Hoy</h5>
+                    <h2>{{ citas_hoy.count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Vacunas Próximas</h5>
+                    <h2>{{ vacunas_proximas.count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Animales Disponibles</h5>
+                    <h2>{{ animales_disponibles }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Solicitudes Recientes</h5>
+                    <h2>{{ solicitudes.count }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Citas de Hoy</h5>
+                </div>
+                <div class="card-body">
+                    {% if citas_hoy %}
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Mascota</th>
+                                <th>Motivo</th>
+                                <th>Veterinario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cita in citas_hoy %}
+                            <tr>
+                                <td>{{ cita.hora }}</td>
+                                <td>{{ cita.animal.nombre }}</td>
+                                <td>{{ cita.motivo }}</td>
+                                <td>{{ cita.veterinario.nombre }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-muted">No hay citas para hoy.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-white">
+                    <h5 class="mb-0">Vacunas Próximas (7 días)</h5>
+                </div>
+                <div class="card-body">
+                    {% if vacunas_proximas %}
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Mascota</th>
+                                <th>Vacuna</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for vacuna in vacunas_proximas %}
+                            <tr>
+                                <td>{{ vacuna.animal.nombre }}</td>
+                                <td>{{ vacuna.nombre }}</td>
+                                <td>{{ vacuna.proxima_dosis }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p class="text-muted">No hay vacunas próximas.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">Últimas Solicitudes de Adopción</h5>
+        </div>
+        <div class="card-body">
+            {% if solicitudes %}
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Solicitante</th>
+                        <th>Mascota</th>
+                        <th>Fecha</th>
+                        <th>Teléfono</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for s in solicitudes %}
+                    <tr>
+                        <td>{{ s.nombre }}</td>
+                        <td>{{ s.animal.nombre }}</td>
+                        <td>{{ s.fecha_solicitud|date:"d/m/Y" }}</td>
+                        <td>{{ s.telefono }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-muted">No hay solicitudes recientes.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'adopciones:panel_alertas' %}" class="btn btn-warning">Ver Alertas de Vacunas</a>
+        <a href="{% url 'adopciones:registro_paciente' %}" class="btn btn-primary">Registrar Paciente</a>
+        <a href="{% url 'adopciones:animal_list' %}" class="btn btn-secondary">Ver Animales</a>
+    </div>
+</div>
+{% endblock %}

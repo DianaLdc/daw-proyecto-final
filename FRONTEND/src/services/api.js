@@ -7,6 +7,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
 
 export const getAnimales = async () => {
@@ -15,6 +16,53 @@ export const getAnimales = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching animales:', error);
+    throw error;
+  }
+};
+
+export const getCasosExito = async () => {
+  try {
+    const response = await api.get('/api/?estado=adoptado');
+    return response.data.filter(a => a.estado === 'adoptado');
+  } catch (error) {
+    console.error('Error fetching casos de exito:', error);
+    throw error;
+  }
+};
+
+export const apiLogin = async (username, password) => {
+  try {
+    const response = await api.post('/api/login/', { username, password });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const apiRegistro = async (username, email, password) => {
+  try {
+    const response = await api.post('/api/registro/', { username, email, password });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const apiSolicitarAdopcion = async (datosCompletos) => {
+  try {
+    const response = await api.post('/api/adopciones/solicitud/', datosCompletos);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getMisMascotas = async () => {
+  try {
+    const response = await api.get('/api/mis-mascotas/');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching mis mascotas:', error);
     throw error;
   }
 };
