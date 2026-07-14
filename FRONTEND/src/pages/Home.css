@@ -1,5 +1,5 @@
 .hero {
-  background: linear-gradient(rgba(0,102,204,0.7), rgba(0,82,163,0.7)), 
+  background: linear-gradient(rgba(74, 0, 128, 0.75), rgba(106, 13, 173, 0.75)),
               url(https://images.unsplash.com/photo-1587300411107-ec28081a9122?w=1200) center/cover;
   color: white;
   padding: 8rem 2rem;
@@ -17,17 +17,18 @@
 }
 
 .btn-red {
-  background: #ff4444;
+  background: #e040fb;
   color: white;
   padding: 1rem 2rem;
-  border-radius: 5px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
+  transition: background 0.3s;
 }
 
 .btn-red:hover {
-  background: #cc0000;
+  background: #ab00d6;
 }
 
 .why-us {
@@ -36,6 +37,7 @@
   padding: 4rem 2rem;
   gap: 2rem;
   flex-wrap: wrap;
+  background: #fdf4ff;
 }
 
 .why-us img {
@@ -53,6 +55,7 @@
 .why-us-text h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #4a0080;
 }
 
 .why-us-text p {
@@ -60,31 +63,6 @@
   line-height: 1.8;
 }
 
-.services {
-  background: #f5ede0;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.services-grid {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.service-item {
-  max-width: 200px;
-}
-
-.service-item .icon {
-  font-size: 3rem;
-}
-
-.service-item p {
-  color: #555;
-}
 /* Tienda Virtual - Carrusel */
 .tienda-seccion {
   padding: 4rem 2rem;
@@ -95,10 +73,11 @@
 .tienda-seccion h2 {
   font-size: 2rem;
   margin-bottom: 0.3rem;
+  color: #4a0080;
 }
 
 .tienda-seccion .subtitulo {
-  color: #666;
+  color: #888;
   margin-bottom: 2rem;
 }
 
@@ -125,16 +104,16 @@
 }
 
 .carrusel-track::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #d8a0f0;
   border-radius: 10px;
 }
 
 .producto-card {
   min-width: 220px;
-  background: #fafafa;
+  background: #fdf4ff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 6px rgba(74, 0, 128, 0.1);
   flex-shrink: 0;
   text-align: left;
 }
@@ -152,16 +131,16 @@
 .producto-card-body h4 {
   font-size: 1rem;
   margin-bottom: 0.3rem;
-  color: #333;
+  color: #4a0080;
 }
 
 .producto-card-body .precio {
-  color: #28a745;
+  color: #e040fb;
   font-weight: bold;
 }
 
 .carrusel-btn {
-  background: #0066cc;
+  background: #4a0080;
   color: white;
   border: none;
   width: 40px;
@@ -170,10 +149,11 @@
   cursor: pointer;
   font-size: 1.2rem;
   flex-shrink: 0;
+  transition: background 0.3s;
 }
 
 .carrusel-btn:hover {
-  background: #0052a3;
+  background: #6a0dad;
 }
 
 .tienda-seccion .btn-red {
@@ -182,7 +162,7 @@
 
 /* Nuestra Sede */
 .sede-seccion {
-  background: #f5ede0;
+  background: #fdf4ff;
   padding: 4rem 2rem;
   display: flex;
   gap: 2rem;
@@ -198,6 +178,7 @@
 .sede-info h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: #4a0080;
 }
 
 .sede-dato {
@@ -223,15 +204,17 @@
 .albergues-seccion {
   padding: 4rem 2rem;
   text-align: center;
+  background: white;
 }
 
 .albergues-seccion h2 {
   font-size: 2rem;
   margin-bottom: 0.3rem;
+  color: #4a0080;
 }
 
 .albergues-seccion .subtitulo {
-  color: #666;
+  color: #888;
   margin-bottom: 2rem;
 }
 
@@ -244,21 +227,16 @@
 }
 
 .albergue-card {
-  background: white;
-  border: 1px solid #eee;
+  background: #fdf4ff;
+  border: 1px solid #e8b4f8;
   border-radius: 10px;
   padding: 1.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.albergue-card .icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 6px rgba(74, 0, 128, 0.08);
 }
 
 .albergue-card h4 {
   margin-bottom: 0.5rem;
-  color: #333;
+  color: #4a0080;
 }
 
 .albergue-card p {
@@ -266,18 +244,21 @@
   font-size: 0.9rem;
 }
 
+/* Momentos Aurora */
 .momentos {
   padding: 4rem 2rem;
   text-align: center;
+  background: #fdf4ff;
 }
 
 .momentos h2 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #4a0080;
 }
 
 .momentos-subtitulo {
-  color: #0066cc;
+  color: #e040fb;
   margin-bottom: 2rem;
 }
 

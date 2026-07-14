@@ -1,5 +1,5 @@
 .footer {
-  background: #0d1b3d;
+  background: linear-gradient(135deg, #2d0050, #4a0080);
   color: white;
   padding: 3rem 2rem 1.5rem;
   margin-top: 3rem;
@@ -14,13 +14,13 @@
 }
 
 .footer-col h4 {
-  color: #4da3ff;
+  color: #f0a8ff;
   margin-bottom: 1rem;
   font-size: 1.1rem;
 }
 
 .footer-col p, .footer-col a {
-  color: #cfd8e3;
+  color: #e8d0f5;
   font-size: 0.9rem;
   line-height: 1.8;
   text-decoration: none;
@@ -28,7 +28,7 @@
 }
 
 .footer-col a:hover {
-  color: white;
+  color: #f0a8ff;
 }
 
 .footer-logo {
@@ -40,9 +40,9 @@
 
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid #2a3a5c;
+  border-top: 1px solid rgba(240, 168, 255, 0.2);
   margin-top: 2rem;
   padding-top: 1.5rem;
-  color: #8a97ad;
+  color: #d8a0f0;
   font-size: 0.85rem;
 }

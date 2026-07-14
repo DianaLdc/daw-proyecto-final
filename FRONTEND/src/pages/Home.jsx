@@ -3,24 +3,26 @@ import { useRef } from 'react';
 import { PRODUCTOS_MOCK } from '../components/Tienda';
 import './Home.css';
 
-// Tomamos solo 6 productos destacados para el carrusel de inicio
 const PRODUCTOS_DESTACADOS = PRODUCTOS_MOCK.slice(0, 6);
 
 const ALBERGUES = [
   {
-    nombre: 'Refugio Huellitas Arequipa',
-    icon: '🐕',
-    descripcion: 'Rescate y adopción de perros abandonados en Cerro Colorado.'
+    nombre: 'Ayúdanos a Ayudar',
+    imagen: 'https://scontent.ftcq3-1.fna.fbcdn.net/v/t39.30808-6/713364065_1380842224090084_730965225104430095_n.jpg?stp=dst-jpg_tt6&cstp=mx1254x1254&ctp=s1254x1254&_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=PZXSgY85eRkQ7kNvwH6JMnS&_nc_oc=AdoGZMEs8wSjnlpX7byhvPvZDIAk27sVlhFaIiLvL8lohvP6NpI2zWA0AxHv1JccUTmctu2aYBkcR-LIEevtt5z0&_nc_zt=23&_nc_ht=scontent.ftcq3-1.fna&_nc_gid=ccuClBYho-gPatBwLUkWdA&_nc_ss=7b2a8&oh=00_AQCkkr8fOfSTxLL-JtRgl9BqPBA3gX4AJPO0F6vZj2FWog&oe=6A5BF49E',
+    descripcion: 'Asociación sin fines de lucro en Socabaya. Rescate y adopción de perritos abandonados.',
+    facebook: 'https://www.facebook.com/ayudanosayudaraqp/',
   },
   {
-    nombre: 'Michi Refugio AQP',
-    icon: '🐱',
-    descripcion: 'Enfocados en el rescate y esterilización de gatos callejeros.'
+    nombre: 'Refugio Huellitas en Busca de Amor',
+    imagen: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&q=80',
+    descripcion: 'Más de 200 huellitas esperando un hogar. Adopciones válidas para la provincia de Arequipa.',
+    facebook: 'https://www.facebook.com/refugiohuellitasenbuscadeamor/',
   },
   {
-    nombre: 'Patitas Solidarias',
-    icon: '🐾',
-    descripcion: 'Red de voluntarios que apoya campañas de adopción en toda la ciudad.'
+    nombre: 'Entre Patas Refugio',
+    imagen: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=300&q=80',
+    descripcion: 'Refugio arequipeño activo en rescate y adopción responsable de perros y gatos.',
+    facebook: 'https://www.facebook.com/EntrePatasRefugio/',
   },
 ];
 
@@ -68,7 +70,6 @@ export default function Home() {
       <section className="tienda-seccion">
         <h2>🏪 Tienda Virtual</h2>
         <p className="subtitulo">Los mejores productos para el cuidado de tu mascota</p>
-
         <div className="carrusel-wrapper">
           <button className="carrusel-btn" onClick={() => scroll(-1)}>‹</button>
           <div className="carrusel-track" ref={carruselRef}>
@@ -84,7 +85,6 @@ export default function Home() {
           </div>
           <button className="carrusel-btn" onClick={() => scroll(1)}>›</button>
         </div>
-
         <Link to="/tienda" className="btn-red">Ver toda la tienda</Link>
       </section>
 
@@ -122,9 +122,26 @@ export default function Home() {
         <div className="albergues-grid">
           {ALBERGUES.map((albergue, i) => (
             <div className="albergue-card" key={i}>
-              <div className="icon">{albergue.icon}</div>
+              <img
+                src={albergue.imagen}
+                alt={albergue.nombre}
+                style={{ width: '100%', height: '140px', objectFit: 'cover', borderRadius: '8px', marginBottom: '0.8rem' }}
+              />
               <h4>{albergue.nombre}</h4>
               <p>{albergue.descripcion}</p>
+              <a href={albergue.facebook} target="_blank" rel="noreferrer" style={{
+                display: 'inline-block',
+                marginTop: '0.8rem',
+                background: '#1877f2',
+                color: 'white',
+                padding: '0.4rem 1rem',
+                borderRadius: '5px',
+                textDecoration: 'none',
+                fontSize: '0.9rem',
+                fontWeight: 'bold'
+              }}>
+                📘 Ver en Facebook
+              </a>
             </div>
           ))}
         </div>

@@ -4,26 +4,28 @@
   align-items: center;
   min-height: 70vh;
   padding: 2rem;
+  background: #fdf4ff;
 }
 
 .login-card {
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(74, 0, 128, 0.15);
   padding: 2.5rem;
   max-width: 400px;
   width: 100%;
+  border: 1px solid #f0d0ff;
 }
 
 .login-card h2 {
   text-align: center;
-  color: #0066cc;
+  color: #4a0080;
   margin-bottom: 0.5rem;
 }
 
 .login-subtitulo {
   text-align: center;
-  color: #666;
+  color: #888;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
@@ -32,39 +34,46 @@
   display: block;
   margin-bottom: 0.3rem;
   font-weight: 600;
-  color: #333;
+  color: #4a0080;
 }
 
 .login-form input {
   width: 100%;
   padding: 0.6rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #d8a0f0;
+  border-radius: 8px;
   font-size: 1rem;
   box-sizing: border-box;
+  outline: none;
+}
+
+.login-form input:focus {
+  border-color: #4a0080;
 }
 
 .login-btn {
   width: 100%;
-  background: #0066cc;
+  background: linear-gradient(135deg, #4a0080, #6a0dad);
   color: white;
   padding: 0.7rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-weight: bold;
   cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.3s;
 }
 
 .login-btn:hover {
-  background: #0052a3;
+  opacity: 0.85;
 }
 
 .login-error {
   background: #fee;
   color: #c00;
   padding: 0.6rem;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-bottom: 1rem;
   font-size: 0.9rem;
   text-align: center;
@@ -79,7 +88,7 @@
 .login-switch button {
   background: none;
   border: none;
-  color: #0066cc;
+  color: #4a0080;
   cursor: pointer;
   font-weight: bold;
   text-decoration: underline;

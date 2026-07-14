@@ -32,20 +32,20 @@ export default function Navbar() {
         {usuario && <li><Link to="/mi-mascota">Mi Mascota</Link></li>}
       </ul>
       <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-        <Link to="/tienda" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}>
+        <Link to="/tienda" style={{ textDecoration: 'none', color: '#f0a8ff', fontWeight: 'bold' }}>
           Tienda
         </Link>
         {usuario ? (
           <>
-            <span style={{ color: 'white', fontWeight: 'bold' }}>
+            <span style={{ color: '#f0a8ff', fontWeight: 'bold' }}>
               👤 {usuario.username}
             </span>
             <button
               onClick={handleLogout}
               style={{
                 background: 'transparent',
-                border: '2px solid white',
-                color: 'white',
+                border: '2px solid #f0a8ff',
+                color: '#f0a8ff',
                 padding: '0.4rem 1rem',
                 borderRadius: '20px',
                 cursor: 'pointer',
@@ -56,7 +56,7 @@ export default function Navbar() {
             </button>
           </>
         ) : (
-          <Link to="/login" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}>
+          <Link to="/login" style={{ textDecoration: 'none', color: '#f0a8ff', fontWeight: 'bold' }}>
             Área de Clientes
           </Link>
         )}
