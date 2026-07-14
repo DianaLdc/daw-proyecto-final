@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Adopciones from './pages/Adopciones';
 import CasosExito from './pages/CasosExito';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/mi-mascota" element={<MiMascota />} />
         <Route path="/tienda" element={<Tienda />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

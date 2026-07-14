@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Tienda.css';
 
 // Productos estáticos listos para mostrar
-const PRODUCTOS_MOCK = [
+export const PRODUCTOS_MOCK = [
   // ALIMENTOS
   {
     id: 1,
