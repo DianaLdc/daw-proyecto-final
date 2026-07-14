@@ -48,4 +48,13 @@ export const apiRegistro = async (username, email, password) => {
   }
 };
 
+export const apiSolicitarAdopcion = async (datosCompletos) => {
+  try {
+    const response = await api.post('/api/adopciones/solicitud/', datosCompletos);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default api;

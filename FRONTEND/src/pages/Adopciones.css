@@ -80,3 +80,20 @@
   color: #666;
   padding: 2rem;
 }
+.btn-adoptar {
+  width: 100%;
+  margin-top: 0.8rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+.btn-adoptar:hover {
+  background: #1e7e34;
+}

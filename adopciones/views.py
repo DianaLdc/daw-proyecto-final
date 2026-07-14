@@ -63,7 +63,7 @@ def animal_api(request):
         })
     return JsonResponse(data, safe=False)
 
-# ==================== PANEL VETERINARIO (Kaka) ====================
+# ==================== PANEL VETERINARIO  ====================
 
 def panel_alertas(request):
     hoy = date.today()
@@ -126,7 +126,7 @@ def dashboard(request):
         'animales_disponibles': animales_disponibles,
     })
 
-# ==================== AUTENTICACION (Karen) ====================
+# ==================== AUTENTICACION  ====================
 
 @csrf_exempt
 def api_registro(request):
@@ -170,7 +170,7 @@ def api_logout(request):
 def es_admin(user):
     return user.is_staff
 
-# ==================== CRUD CITAS (Karen) ====================
+# ==================== CRUD CITAS   ====================
 
 @login_required
 @user_passes_test(es_admin)
@@ -214,7 +214,7 @@ def cita_delete(request, pk):
         return redirect('adopciones:cita_list')
     return render(request, 'adopciones/cita_confirm_delete.html', {'cita': cita})
 
-# ==================== CRUD VACUNAS (Karen) ====================
+# ==================== CRUD VACUNAS  ====================
 
 @login_required
 @user_passes_test(es_admin)
@@ -258,7 +258,7 @@ def vacuna_delete(request, pk):
         return redirect('adopciones:vacuna_list')
     return render(request, 'adopciones/vacuna_confirm_delete.html', {'vacuna': vacuna})
 
-# ==================== APIs JSON (Karen) ====================
+# ==================== APIs JSON   ====================
 
 @csrf_exempt
 def api_citas(request):
@@ -329,7 +329,26 @@ def api_solicitud_adopcion(request):
             return JsonResponse({'error': 'Debes iniciar sesion para adoptar'}, status=401)
         data = json.loads(request.body)
         animal = get_object_or_404(Animal, pk=data.get('animal_id'))
+
+        solicitud = SolicitudAdopcion.objects.create(
+            nombre=data.get('nombre'),
+            dni=data.get('dni'),
+            telefono=data.get('telefono'),
+            email=data.get('email'),
+            direccion=data.get('direccion'),
+            tipo_vivienda=data.get('tipo_vivienda'),
+            tiene_jardin=data.get('tiene_jardin'),
+            otros_animales=data.get('otros_animales'),
+            horas_en_casa=data.get('horas_en_casa'),
+            experiencia=data.get('experiencia'),
+            animal=animal,
+        )
+
         animal.estado = 'adoptado'
         animal.save()
-        return JsonResponse({'mensaje': f'Solicitud de adopcion para {animal.nombre} enviada correctamente'})
+
+        return JsonResponse({
+            'mensaje': f'Solicitud de adopcion para {animal.nombre} enviada correctamente',
+            'solicitud_id': solicitud.id
+        })
     return JsonResponse({'error': 'Metodo no permitido'}, status=405)
