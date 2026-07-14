@@ -2,6 +2,11 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Animal
 from .forms import AnimalForm
 from django.http import JsonResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 def animal_list(request):
     animales = Animal.objects.all()
