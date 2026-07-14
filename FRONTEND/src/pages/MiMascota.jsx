@@ -55,9 +55,16 @@ export default function MiMascota() {
       {mascotas.map(mascota => (
         <div className="mascota-card" key={mascota.id}>
           <div className="mascota-header">
+            {mascota.foto && (
+              <img
+                src={mascota.foto}
+                alt={mascota.nombre}
+                style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '50%' }}
+              />
+            )}
             <div>
               <h3>{mascota.nombre}</h3>
-              <span>{mascota.especie}</span>
+              <span>{mascota.especie} - {mascota.raza} - {mascota.edad} años</span>
             </div>
           </div>
 

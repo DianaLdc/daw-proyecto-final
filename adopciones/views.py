@@ -317,6 +317,9 @@ def api_mis_mascotas(request):
             'id': animal.id,
             'nombre': animal.nombre,
             'especie': animal.especie,
+            'raza': animal.raza,
+            'edad': animal.edad,
+            'foto': request.build_absolute_uri(animal.foto.url) if animal.foto else None,
             'citas': [{'fecha': str(c.fecha), 'motivo': c.motivo, 'estado': c.estado} for c in citas],
             'vacunas': [{'nombre': v.nombre, 'proxima_dosis': str(v.proxima_dosis)} for v in vacunas],
         })
