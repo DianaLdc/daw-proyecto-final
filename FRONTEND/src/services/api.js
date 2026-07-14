@@ -57,4 +57,14 @@ export const apiSolicitarAdopcion = async (datosCompletos) => {
   }
 };
 
+export const getMisMascotas = async () => {
+  try {
+    const response = await api.get('/api/mis-mascotas/');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching mis mascotas:', error);
+    throw error;
+  }
+};
+
 export default api;

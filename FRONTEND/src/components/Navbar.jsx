@@ -29,6 +29,7 @@ export default function Navbar() {
         <li><Link to="/">Inicio</Link></li>
         <li><Link to="/adopciones">Adopciones</Link></li>
         <li><Link to="/casos-exito">Casos de Éxito</Link></li>
+        {usuario && <li><Link to="/mi-mascota">Mi Mascota</Link></li>}
       </ul>
       <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
         <Link to="/tienda" style={{ textDecoration: 'none', color: 'inherit', fontWeight: 'bold' }}>
