@@ -119,10 +119,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Login
+LOGIN_URL = '/adopciones/api/login/'
+LOGIN_REDIRECT_URL = '/adopciones/'
+# Redireccion de login
+LOGIN_URL = '/admin/login/'

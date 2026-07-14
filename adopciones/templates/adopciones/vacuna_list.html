@@ -1,0 +1,61 @@
+{% extends 'adopciones/base.html' %}
+
+{% block title %}Lista de Vacunas - Veterinaria Patitas{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold text-success">💉 Vacunas</h2>
+        <p class="text-muted mb-0">Control de vacunación de animales</p>
+    </div>
+    <a href="{% url 'adopciones:vacuna_create' %}" class="btn btn-success">
+        <i class="bi bi-plus-circle"></i> Nueva Vacuna
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th>Animal</th>
+                    <th>Vacuna</th>
+                    <th>Fecha Aplicada</th>
+                    <th>Próxima Dosis</th>
+                    <th>Lote</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vacuna in vacunas %}
+                <tr>
+                    <td>{{ vacuna.animal.nombre }}</td>
+                    <td>{{ vacuna.nombre }}</td>
+                    <td>{{ vacuna.fecha_aplicada }}</td>
+                    <td>
+                        <span class="badge bg-warning text-dark">
+                            {{ vacuna.proxima_dosis }}
+                        </span>
+                    </td>
+                    <td>{{ vacuna.lote }}</td>
+                    <td>
+                        <a href="{% url 'adopciones:vacuna_update' vacuna.pk %}" class="btn btn-warning btn-sm">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="{% url 'adopciones:vacuna_delete' vacuna.pk %}" class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center text-muted py-4">No hay vacunas registradas</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
