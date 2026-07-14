@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Tienda.css';
 
 // Productos estáticos listos para mostrar
@@ -25,7 +25,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Comida Húmeda Pollo y Arroz",
     precio: "S/. 12.50",
     descripcion: "Latas de 400g con ingredientes naturales y sin conservantes.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVpyjyG1jI8B-yAgTnMwKGNh4ShLlKijl7sFfWim59bzEEaXSk-MulH9w&s=10",
     categoria: "alimentos"
   },
   {
@@ -33,7 +33,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Alimento Cachorros Premium 1kg",
     precio: "S/. 42.00",
     descripcion: "Diseñado para cachorros con proteínas y calcio para crecimiento.",
-    imagen: "https://images.unsplash.com/photo-1576836411405-fab8c2e65e52?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5XLH98-qLREJYGw9X0Ojg0r4QyHIKKmvD44IHfzsTh2moIa3H0bmTZzM&s=10",
     categoria: "alimentos"
   },
   {
@@ -41,7 +41,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Snacks Dentales para Perros",
     precio: "S/. 18.00",
     descripcion: "Galletas que limpian dientes y refrescan aliento.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://www.superpet.pe/on/demandware.static/-/Sites-SuperPet-master-catalog/default/dw4dea5d9c/images/gnawlers-dental-pure-snack-de-higiene.jpg",
     categoria: "alimentos"
   },
   {
@@ -75,7 +75,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Pelota Interactiva Sonora",
     precio: "S/. 22.00",
     descripcion: "Juguete que rebota y emite sonidos para entretener a tu perro.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://oechsle.vteximg.com.br/arquivos/ids/17759847-1000-1000/imageUrl_1.jpg?v=638507610513170000",
     categoria: "juguetes"
   },
   {
@@ -99,7 +99,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Kong Clásico Resistente",
     precio: "S/. 35.00",
     descripcion: "Juguete de goma indestructible que ayuda a limpiar dientes.",
-    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    imagen: "https://vetpharmaperu.com/wp-content/uploads/2021/09/1.1.1.-Kong-Classic-6.jpg",
     categoria: "juguetes"
   },
   {
@@ -125,7 +125,7 @@ const PRODUCTOS_MOCK = [
     nombre: "Acondicionador Pelaje Brillante",
     precio: "S/. 32.00",
     descripcion: "Acondicionador que deja el pelaje suave, brillante y manejable.",
-    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR28Y-HiMUtnbWbjDRvVPdX0vIJ7Ci-K-R6ARkvGM1yJVKJjtaAKgMIuaep&s=10",
     categoria: "higiene"
   },
   {
