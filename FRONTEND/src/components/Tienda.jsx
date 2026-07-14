@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './Tienda.css';
 
 // Productos estáticos listos para mostrar
 const PRODUCTOS_MOCK = [
@@ -7,78 +8,156 @@ const PRODUCTOS_MOCK = [
     nombre: "Alimento Premium Perros Adultos",
     precio: "S/. 85.00",
     descripcion: "Bolsa de 3kg con nutrientes esenciales para el cuidado de tu mascota.",
-    imagen: "https://oechsle.vteximg.com.br/arquivos/ids/1210986-1000-1000/image-715bb9c641a84b3483d1b6fe7a20f9ec.jpg?v=637494291737630000"
+    imagen: "https://oechsle.vteximg.com.br/arquivos/ids/1210986-1000-1000/image-715bb9c641a84b3483d1b6fe7a20f9ec.jpg?v=637494291737630000",
+    categoria: "alimentos"
   },
   {
     id: 2,
     nombre: "Juguete Cuerda Dental",
     precio: "S/. 15.00",
     descripcion: "Ayuda a limpiar los dientes de tu perro mientras juega.",
-    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80"
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "juguetes"
   },
   {
     id: 3,
     nombre: "Shampoo Hipoalergénico Mascotas",
     precio: "S/. 28.00",
     descripcion: "Fórmula suave ideal para pieles sensibles y todo tipo de pelaje.",
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8rbZHhmmffdGDXk_HurVjn0rg7kQK5zhr8IHOYEo1ePJpaVlVU3f6pAAA&s=10"
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8rbZHhmmffdGDXk_HurVjn0rg7kQK5zhr8IHOYEo1ePJpaVlVU3f6pAAA&s=10",
+    categoria: "higiene"
   },
   {
     id: 4,
     nombre: "Rascador para Gatos de 3 Niveles",
     precio: "S/. 120.00",
     descripcion: "Con postes de sisal para que tus gatos jueguen y afilen sus uñas.",
-    imagen: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&q=80"
+    imagen: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&q=80",
+    categoria: "juguetes"
+  },
+  {
+    id: 5,
+    nombre: "Correa Extensible Premium",
+    precio: "S/. 45.00",
+    descripcion: "Correa extensible de 5m con manija ergonómica para paseos cómodos.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 6,
+    nombre: "Vitaminas Masticables Perros",
+    precio: "S/. 35.00",
+    descripcion: "Suplemento vitamínico completo con sabor a carne.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "suplementos"
   }
 ];
 
+const CATEGORIAS = [
+  { id: 'todos', label: 'Todos' },
+  { id: 'alimentos', label: 'Alimentos' },
+  { id: 'juguetes', label: 'Juguetes' },
+  { id: 'higiene', label: 'Higiene' },
+  { id: 'accesorios', label: 'Accesorios' },
+  { id: 'suplementos', label: 'Suplementos' }
+];
+
 export default function Tienda() {
+  const [categoriaActiva, setCategoriaActiva] = useState('todos');
+
+  // Filtrar productos según categoría
+  const productosFiltrados = categoriaActiva === 'todos' 
+    ? PRODUCTOS_MOCK 
+    : PRODUCTOS_MOCK.filter(p => p.categoria === categoriaActiva);
+
+  // Mapeo de categorías a colores
+  const obtenerColorCategoria = (categoria) => {
+    const colores = {
+      alimentos: '#f59e0b',
+      juguetes: '#ec4899',
+      higiene: '#06b6d4',
+      accesorios: '#8b5cf6',
+      suplementos: '#ef4444'
+    };
+    return colores[categoria] || '#10b981';
+  };
+
+  // SVG para icono de carrito
+  const IconoCarrito = () => (
+    <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1h7.586a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM5 16a2 2 0 11-4 0 2 2 0 014 0zm8 0a2 2 0 11-4 0 2 2 0 014 0z"></path>
+    </svg>
+  );
+
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' }}>
-      <h1 style={{ textAlign: 'center', color: '#2c3e50', marginBottom: '2rem' }}>
-        Tienda Virtual Veterinaria
-      </h1>
-      
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        gap: '2rem'
-      }}>
-        {PRODUCTOS_MOCK.map((producto) => (
-          <div key={producto.id} style={{
-            border: '1px solid #e0e0e0',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: '#fff'
-          }}>
-            <img 
-              src={producto.imagen} 
-              alt={producto.nombre} 
-              style={{ width: '100%', height: '200px', objectFit: 'cover' }} 
-            />
-            <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-              <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.2rem', color: '#333' }}>{producto.nombre}</h3>
-              <p style={{ fontSize: '0.9rem', color: '#666', flexGrow: 1 }}>{producto.descripcion}</p>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '1rem' }}>
-                <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#27ae60' }}>{producto.precio}</span>
-                <button style={{
-                  backgroundColor: '#3498db',
-                  color: 'white',
-                  border: 'none',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '4px',
-                  cursor: 'pointer'
-                }}>
-                  Ver detalle
-                </button>
+    <div className="tienda-container">
+      {/* Header */}
+      <div className="tienda-header">
+        <h1>🛍️ Tienda Virtual Veterinaria</h1>
+        <p>Productos de calidad para el cuidado de tus mascotas</p>
+      </div>
+
+      {/* Filtros */}
+      <div className="filtros-container">
+        {CATEGORIAS.map(categoria => (
+          <button
+            key={categoria.id}
+            className={`filtro-btn ${categoriaActiva === categoria.id ? 'activo' : ''}`}
+            onClick={() => setCategoriaActiva(categoria.id)}
+          >
+            {categoria.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid de Productos */}
+      <div className="productos-grid">
+        {productosFiltrados.map(producto => (
+          <div key={producto.id} className="producto-card">
+            {/* Imagen con Badge */}
+            <div style={{ position: 'relative' }}>
+              <img 
+                src={producto.imagen} 
+                alt={producto.nombre} 
+                className="producto-imagen"
+              />
+              <div 
+                className="categoria-badge"
+                style={{ background: obtenerColorCategoria(producto.categoria) }}
+              >
+                {producto.categoria}
               </div>
+            </div>
+
+            {/* Contenido */}
+            <div className="producto-contenido">
+              <h3 className="producto-nombre">{producto.nombre}</h3>
+              <p className="producto-descripcion">{producto.descripcion}</p>
+            </div>
+
+            {/* Footer con Precio y Botón */}
+            <div className="producto-footer">
+              <p className="producto-precio">{producto.precio}</p>
+              <button className="btn-detalle">
+                <IconoCarrito />
+                Ver detalle
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Mensaje si no hay productos */}
+      {productosFiltrados.length === 0 && (
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '3rem 1rem',
+          color: '#6b7280',
+          fontSize: '1.1rem'
+        }}>
+          <p>No hay productos en esta categoría.</p>
+        </div>
+      )}
     </div>
   );
 }
