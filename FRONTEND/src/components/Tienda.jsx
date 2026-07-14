@@ -297,11 +297,28 @@ const CATEGORIAS = [
 
 export default function Tienda() {
   const [categoriaActiva, setCategoriaActiva] = useState('todos');
+  const [busqueda, setBusqueda] = useState('');
+  const [carrito, setCarrito] = useState([]);
+  const [notificacion, setNotificacion] = useState(null);
+  const [modalProducto, setModalProducto] = useState(null);
 
-  // Filtrar productos según categoría
-  const productosFiltrados = categoriaActiva === 'todos' 
+  // Agregar al carrito con notificación
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+    setNotificacion(`✓ ${producto.nombre} agregado al carrito`);
+    
+    setTimeout(() => setNotificacion(null), 3000);
+  };
+
+  // Filtrar productos según categoría y búsqueda
+  let productosFiltrados = categoriaActiva === 'todos' 
     ? PRODUCTOS_MOCK 
     : PRODUCTOS_MOCK.filter(p => p.categoria === categoriaActiva);
+
+  productosFiltrados = productosFiltrados.filter(p =>
+    p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+    p.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+  );
 
   // Mapeo de categorías a colores
   const obtenerColorCategoria = (categoria) => {
@@ -315,6 +332,11 @@ export default function Tienda() {
     return colores[categoria] || '#10b981';
   };
 
+  // Generar rating aleatorio (para demostración)
+  const obtenerRating = (id) => {
+    return (4 + (id % 2)).toFixed(1);
+  };
+
   // SVG para icono de carrito
   const IconoCarrito = () => (
     <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -322,12 +344,44 @@ export default function Tienda() {
     </svg>
   );
 
+  // SVG para estrella
+  const IconoEstrella = () => (
+    <svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+    </svg>
+  );
+
   return (
     <div className="tienda-container">
-      {/* Header */}
-      <div className="tienda-header">
-        <h1>🛍️ Tienda Virtual Veterinaria</h1>
-        <p>Productos de calidad para el cuidado de tus mascotas</p>
+      {/* Notificación */}
+      {notificacion && (
+        <div className="notificacion-flotante">
+          {notificacion}
+        </div>
+      )}
+
+      {/* Header con Carrito */}
+      <div className="tienda-header-superior">
+        <div className="tienda-header">
+          <h1>🛍️ Tienda Virtual Veterinaria</h1>
+          <p>Productos de calidad para el cuidado de tus mascotas</p>
+        </div>
+        
+        <div className="carrito-badge">
+          <IconoCarrito />
+          <span className="cantidad">{carrito.length}</span>
+        </div>
+      </div>
+
+      {/* Buscador */}
+      <div className="buscador-container">
+        <input
+          type="text"
+          className="buscador-input"
+          placeholder="🔍 Buscar productos..."
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
       </div>
 
       {/* Filtros */}
@@ -341,6 +395,11 @@ export default function Tienda() {
             {categoria.label}
           </button>
         ))}
+      </div>
+
+      {/* Contador de resultados */}
+      <div className="contador-resultados">
+        Mostrando <strong>{productosFiltrados.length}</strong> productos
       </div>
 
       {/* Grid de Productos */}
@@ -360,20 +419,39 @@ export default function Tienda() {
               >
                 {producto.categoria}
               </div>
+              
+              {/* Badge de popularidad */}
+              <div className="rating-badge">
+                <IconoEstrella />
+                <span>{obtenerRating(producto.id)}</span>
+              </div>
             </div>
 
             {/* Contenido */}
             <div className="producto-contenido">
               <h3 className="producto-nombre">{producto.nombre}</h3>
               <p className="producto-descripcion">{producto.descripcion}</p>
+              
+              {/* Rating */}
+              <div className="rating-container">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className={`estrella ${i < Math.floor(obtenerRating(producto.id)) ? 'llena' : ''}`}>
+                    ★
+                  </span>
+                ))}
+                <span className="rating-texto">({Math.floor(Math.random() * 100) + 20})</span>
+              </div>
             </div>
 
             {/* Footer con Precio y Botón */}
             <div className="producto-footer">
               <p className="producto-precio">{producto.precio}</p>
-              <button className="btn-detalle">
+              <button 
+                className="btn-detalle"
+                onClick={() => agregarAlCarrito(producto)}
+              >
                 <IconoCarrito />
-                Ver detalle
+                Agregar
               </button>
             </div>
           </div>
@@ -388,9 +466,34 @@ export default function Tienda() {
           color: '#6b7280',
           fontSize: '1.1rem'
         }}>
-          <p>No hay productos en esta categoría.</p>
+          <p>😔 No encontramos productos que coincidan con tu búsqueda.</p>
         </div>
       )}
+
+      {/* Banner informativo */}
+      <div className="banner-info">
+        <div className="banner-item">
+          <span className="banner-icon">🚚</span>
+          <div>
+            <strong>Envío Gratis</strong>
+            <p>En compras mayores a S/. 100</p>
+          </div>
+        </div>
+        <div className="banner-item">
+          <span className="banner-icon">✅</span>
+          <div>
+            <strong>Garantía</strong>
+            <p>Todos nuestros productos incluyen garantía</p>
+          </div>
+        </div>
+        <div className="banner-item">
+          <span className="banner-icon">💬</span>
+          <div>
+            <strong>Soporte 24/7</strong>
+            <p>¿Preguntas? Estamos aquí para ayudarte</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
