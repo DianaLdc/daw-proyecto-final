@@ -144,5 +144,4 @@ export default function Home() {
         </div>
       </section>
     </div>
-  );
-}
+  )
