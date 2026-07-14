@@ -3,6 +3,7 @@ import './Tienda.css';
 
 // Productos estáticos listos para mostrar
 const PRODUCTOS_MOCK = [
+  // ALIMENTOS
   {
     id: 1,
     nombre: "Alimento Premium Perros Adultos",
@@ -12,20 +13,54 @@ const PRODUCTOS_MOCK = [
     categoria: "alimentos"
   },
   {
+    id: 7,
+    nombre: "Alimento Gatos Siete Años+",
+    precio: "S/. 65.00",
+    descripcion: "Fórmula especial para gatos mayores con probióticos y taurina.",
+    imagen: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&q=80",
+    categoria: "alimentos"
+  },
+  {
+    id: 8,
+    nombre: "Comida Húmeda Pollo y Arroz",
+    precio: "S/. 12.50",
+    descripcion: "Latas de 400g con ingredientes naturales y sin conservantes.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "alimentos"
+  },
+  {
+    id: 9,
+    nombre: "Alimento Cachorros Premium 1kg",
+    precio: "S/. 42.00",
+    descripcion: "Diseñado para cachorros con proteínas y calcio para crecimiento.",
+    imagen: "https://images.unsplash.com/photo-1576836411405-fab8c2e65e52?w=500&q=80",
+    categoria: "alimentos"
+  },
+  {
+    id: 10,
+    nombre: "Snacks Dentales para Perros",
+    precio: "S/. 18.00",
+    descripcion: "Galletas que limpian dientes y refrescan aliento.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "alimentos"
+  },
+  {
+    id: 11,
+    nombre: "Alimento Gluten Free Perros",
+    precio: "S/. 95.00",
+    descripcion: "Bolsa de 4kg sin gluten para perros con alergias.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "alimentos"
+  },
+  
+  // JUGUETES
+  {
     id: 2,
     nombre: "Juguete Cuerda Dental",
     precio: "S/. 15.00",
     descripcion: "Ayuda a limpiar los dientes de tu perro mientras juega.",
     imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
     categoria: "juguetes"
-  },
-  {
-    id: 3,
-    nombre: "Shampoo Hipoalergénico Mascotas",
-    precio: "S/. 28.00",
-    descripcion: "Fórmula suave ideal para pieles sensibles y todo tipo de pelaje.",
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8rbZHhmmffdGDXk_HurVjn0rg7kQK5zhr8IHOYEo1ePJpaVlVU3f6pAAA&s=10",
-    categoria: "higiene"
   },
   {
     id: 4,
@@ -36,6 +71,106 @@ const PRODUCTOS_MOCK = [
     categoria: "juguetes"
   },
   {
+    id: 12,
+    nombre: "Pelota Interactiva Sonora",
+    precio: "S/. 22.00",
+    descripcion: "Juguete que rebota y emite sonidos para entretener a tu perro.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "juguetes"
+  },
+  {
+    id: 13,
+    nombre: "Frisbee para Perros",
+    precio: "S/. 19.00",
+    descripcion: "Frisbee resistente y flotante para jugar en tierra o agua.",
+    imagen: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=500&q=80",
+    categoria: "juguetes"
+  },
+  {
+    id: 14,
+    nombre: "Tubo de Peluche con Cascabel",
+    precio: "S/. 25.00",
+    descripcion: "Juguete de peluche suave con cascabel para gatos.",
+    imagen: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&q=80",
+    categoria: "juguetes"
+  },
+  {
+    id: 15,
+    nombre: "Kong Clásico Resistente",
+    precio: "S/. 35.00",
+    descripcion: "Juguete de goma indestructible que ayuda a limpiar dientes.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "juguetes"
+  },
+  {
+    id: 16,
+    nombre: "Set Juguetes Variados 8 Pzas",
+    precio: "S/. 40.00",
+    descripcion: "Pack con 8 juguetes diferentes para mantener a tu mascota entretenida.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "juguetes"
+  },
+  
+  // HIGIENE
+  {
+    id: 3,
+    nombre: "Shampoo Hipoalergénico Mascotas",
+    precio: "S/. 28.00",
+    descripcion: "Fórmula suave ideal para pieles sensibles y todo tipo de pelaje.",
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8rbZHhmmffdGDXk_HurVjn0rg7kQK5zhr8IHOYEo1ePJpaVlVU3f6pAAA&s=10",
+    categoria: "higiene"
+  },
+  {
+    id: 17,
+    nombre: "Acondicionador Pelaje Brillante",
+    precio: "S/. 32.00",
+    descripcion: "Acondicionador que deja el pelaje suave, brillante y manejable.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "higiene"
+  },
+  {
+    id: 18,
+    nombre: "Cepillo Desengrasante Dientes",
+    precio: "S/. 15.00",
+    descripcion: "Cepillo especial con crema dental para limpiar dientes.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "higiene"
+  },
+  {
+    id: 19,
+    nombre: "Toallitas Húmedas Limpiadoras",
+    precio: "S/. 12.00",
+    descripcion: "Pack de 50 toallitas biodegradables para limpiar patas y hocico.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "higiene"
+  },
+  {
+    id: 20,
+    nombre: "Loción Limpiadora de Oídos",
+    precio: "S/. 22.00",
+    descripcion: "Solución suave para limpiar y prevenir infecciones de oído.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "higiene"
+  },
+  {
+    id: 21,
+    nombre: "Cortaúñas Profesional",
+    precio: "S/. 45.00",
+    descripcion: "Cortaúñas de acero inoxidable con seguro y lima incluida.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "higiene"
+  },
+  {
+    id: 22,
+    nombre: "Spray Desodorizante Mascotas",
+    precio: "S/. 18.00",
+    descripcion: "Spray neutralizador de olores con aroma natural.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "higiene"
+  },
+  
+  // ACCESORIOS
+  {
     id: 5,
     nombre: "Correa Extensible Premium",
     precio: "S/. 45.00",
@@ -44,11 +179,109 @@ const PRODUCTOS_MOCK = [
     categoria: "accesorios"
   },
   {
+    id: 23,
+    nombre: "Collar Identificación Grabado",
+    precio: "S/. 28.00",
+    descripcion: "Collar de acero inoxidable con grabado personalizado del nombre.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 24,
+    nombre: "Arnés de Seguridad Ajustable",
+    precio: "S/. 55.00",
+    descripcion: "Arnés reforzado con cinturones reflectantes para mayor seguridad.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 25,
+    nombre: "Cama Ortopédica Premium",
+    precio: "S/. 180.00",
+    descripcion: "Cama de espuma viscoelástica con funda lavable y antideslizante.",
+    imagen: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 26,
+    nombre: "Comedero Automático con Temporizador",
+    precio: "S/. 120.00",
+    descripcion: "Comedero inteligente que dosifica alimento en horarios programados.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 27,
+    nombre: "Transportín Aéreo Homologado",
+    precio: "S/. 95.00",
+    descripcion: "Transportín certificado para viajes en avión con ventilación.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "accesorios"
+  },
+  {
+    id: 28,
+    nombre: "Bebedero Automático con Filtro",
+    precio: "S/. 65.00",
+    descripcion: "Bebedero de circulación con filtro para agua fresca y limpia.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "accesorios"
+  },
+  
+  // SUPLEMENTOS
+  {
     id: 6,
     nombre: "Vitaminas Masticables Perros",
     precio: "S/. 35.00",
     descripcion: "Suplemento vitamínico completo con sabor a carne.",
     imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 29,
+    nombre: "Omega 3 para Pelaje Brillante",
+    precio: "S/. 42.00",
+    descripcion: "Suplemento de ácidos grasos para pelaje y piel saludables.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 30,
+    nombre: "Glucosamina para Articulaciones",
+    precio: "S/. 55.00",
+    descripcion: "Suplemento para mantener articulaciones y huesos fuertes.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 31,
+    nombre: "Probióticos Digestivos",
+    precio: "S/. 38.00",
+    descripcion: "Probióticos para mejorar la digestión y la salud intestinal.",
+    imagen: "https://images.unsplash.com/photo-1585518419759-2028e91e4fca?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 32,
+    nombre: "Calcio y Fósforo Crecimiento",
+    precio: "S/. 48.00",
+    descripcion: "Suplemento mineral para fortalecer huesos en cachorros.",
+    imagen: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 33,
+    nombre: "Vitamina C Inmunidad",
+    precio: "S/. 32.00",
+    descripcion: "Refuerza el sistema inmunológico contra enfermedades.",
+    imagen: "https://images.unsplash.com/photo-1545249390-6bdfa286032f?w=500&q=80",
+    categoria: "suplementos"
+  },
+  {
+    id: 34,
+    nombre: "Taurina para Gatos",
+    precio: "S/. 28.00",
+    descripcion: "Aminoácido esencial para la salud cardiovascular de gatos.",
+    imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
     categoria: "suplementos"
   }
 ];
