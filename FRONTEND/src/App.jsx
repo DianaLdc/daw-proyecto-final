@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Adopciones from './pages/Adopciones';
 import './App.css';
 
+import Tienda from './components/Tienda';
 function App() {
   return (
 
@@ -18,6 +19,7 @@ function App() {
     
         <Route path="/" element={<Home />} />
         <Route path="/adopciones" element={<Adopciones />} />
+        <Route path="/tienda" element={<Tienda />} />
       </Routes>
     </Router>
   );
