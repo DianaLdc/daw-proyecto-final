@@ -14,12 +14,12 @@
 
 ## 👥 Equipo
 
-Integrantes
-
-| Diana Ramos Rodrigo
-| Karen Alvarez Molina
-| Alexandra Martel Gallegos
-| Raúl Condori Idme
+| Integrante                |
+| ------------------------- |
+| Diana Ramos Rodrigo       |
+| Karen Alvarez Molina      |
+| Alexandra Martel Gallegos |
+| Raúl                      |
 
 ---
 
@@ -236,5 +236,5 @@ daw-proyecto-final/
 **Veterinaria Aurora** — Arequipa, Perú  
 📍 Calle Mercaderes 234, Cercado, Arequipa  
 📞 (054) 227-890  
-✉️ veterinariaaurora.aqp@gmail.com  
+✉️ veterinariaurora.aqp@gmail.com  
 🕐 Lunes a Sábado, 8:00 am - 8:00 pm
