@@ -14,12 +14,12 @@
 
 ## 👥 Equipo
 
-| Integrante                |
-| ------------------------- |
-| Diana Ramos Rodrigo       |
-| Karen Alvarez Molina      |
-| Alexandra Martel Gallegos |
-| Raúl                      |
+| Integrantes                |
+| -------------------------- |
+| Diana Ramos Rodrigo        |
+| Karen Alvarez Molina       |
+| Alexandra Martel Gallegos  |
+| Raúl Wilfredo Condori Idme |
 
 ---
 
