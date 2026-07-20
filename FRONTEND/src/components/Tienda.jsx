@@ -282,7 +282,7 @@ export const PRODUCTOS_MOCK = [
     precio: "S/. 28.00",
     descripcion: "Aminoácido esencial para la salud cardiovascular de gatos.",
     imagen: "https://images.unsplash.com/photo-1552053831-71594a27c62d?w=500&q=80",
-    categoria: "suplementos"
+    categoria: "suplementos animal"
   }
 ];
 
