@@ -8,9 +8,23 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.http import JsonResponse
+from .models import Veterinario
 
 # ==================== ANIMALES ====================
+def api_veterinarios(request):
+    veterinarios = Veterinario.objects.all()
 
+    data = []
+
+    for veterinario in veterinarios:
+        data.append({
+            "id": veterinario.id,
+            "nombre": veterinario.nombre,
+            "especialidad": veterinario.especialidad,
+        })
+
+    return JsonResponse(data, safe=False)
 def animal_list(request):
     animales = Animal.objects.all()
     return render(request, 'adopciones/animal_list.html', {'animales': animales})

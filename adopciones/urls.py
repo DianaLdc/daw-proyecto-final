@@ -4,6 +4,11 @@ from . import views
 app_name = 'adopciones'
 
 urlpatterns = [
+     path(
+        "api/veterinarios/",
+        views.api_veterinarios,
+        name="api_veterinarios"
+    ),
     # ==================== ANIMALES ====================
     path('', views.animal_list, name='animal_list'),
     path('<int:pk>/', views.animal_detail, name='animal_detail'),
@@ -41,4 +46,5 @@ urlpatterns = [
     path('api/login/', views.api_login, name='api_login'),
     path('api/registro/', views.api_registro, name='api_registro'),
     path('api/logout/', views.api_logout, name='api_logout'),
+    
 ]
