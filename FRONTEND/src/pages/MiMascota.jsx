@@ -41,7 +41,6 @@ export default function MiMascota() {
     <div className="mi-mascota">
       <h2>Mi Mascota</h2>
       <p className="subtitulo">Aquí puedes ver a tus mascotas, sus citas y vacunas</p>
-
       {error && <p className="no-mascotas">{error}</p>}
 
       {!error && mascotas.length === 0 && (

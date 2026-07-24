@@ -93,3 +93,19 @@
   color: #0066cc;
   font-weight: bold;
 }
+
+.btn-cita {
+  background: #8e5bd6;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin: 1rem 0;
+  transition: background 0.3s;
+}
+
+.btn-cita:hover {
+  background: #7345b8;
+}

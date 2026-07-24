@@ -67,4 +67,23 @@ export const getMisMascotas = async () => {
   }
 };
 
+export const getVeterinarios = async () => {
+  try {
+    const response = await api.get('/api/veterinarios/');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching veterinarios:', error);
+    throw error;
+  }
+};
+
+export const crearCita = async (datosCita) => {
+  try {
+    const response = await api.post('/api/citas/', datosCita);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export default api;
