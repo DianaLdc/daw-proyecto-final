@@ -1,0 +1,120 @@
+{% extends 'adopciones/base.html' %}
+
+{% block title %}Bienvenida - Veterinaria Aurora{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<div class="p-5 mb-4 rounded-3 text-white text-center"
+     style="background: linear-gradient(135deg, #4A2575 0%, #6B3FA0 60%, #1B5E20 100%);">
+    <div class="py-3">
+        <div style="font-size: 80px;">🐾</div>
+        <h1 class="display-5 fw-bold mt-2">Veterinaria Aurora</h1>
+        <p class="col-md-8 mx-auto fs-5 mt-2">
+            Tu veterinaria de confianza — adopciones, citas médicas y cuidado de mascotas
+        </p>
+        <p class="text-white-50">Sistema web de gestión veterinaria · UNSA 2026</p>
+    </div>
+</div>
+
+<!-- BOTONES PRINCIPALES -->
+<div class="row g-4 mb-5 text-center">
+
+    <div class="col-md-3">
+        <a href="http://localhost:5173/" target="_blank" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-4"
+                 style="border-radius: 16px; transition: 0.2s;"
+                 onmouseover="this.style.transform='translateY(-5px)'"
+                 onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 50px;">🏠</div>
+                <h5 class="fw-bold mt-3" style="color: #4A2575;">Página Principal</h5>
+                <p class="text-muted small">Visita el portal principal de Veterinaria Aurora</p>
+                <span class="btn btn-sm mt-2" style="background-color: #6B3FA0; color: white;">Ir al inicio</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="http://localhost:5173/adopciones" target="_blank" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-4"
+                 style="border-radius: 16px; transition: 0.2s;"
+                 onmouseover="this.style.transform='translateY(-5px)'"
+                 onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 50px;">🐶</div>
+                <h5 class="fw-bold mt-3" style="color: #1B5E20;">Adopciones</h5>
+                <p class="text-muted small">Encuentra a tu compañero ideal y dale un hogar</p>
+                <span class="btn btn-sm mt-2" style="background-color: #1B5E20; color: white;">Ver animales</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="http://localhost:5173/tienda" target="_blank" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-4"
+                 style="border-radius: 16px; transition: 0.2s;"
+                 onmouseover="this.style.transform='translateY(-5px)'"
+                 onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 50px;">🛍️</div>
+                <h5 class="fw-bold mt-3" style="color: #E8833A;">Tienda Online</h5>
+                <p class="text-muted small">Accesorios y productos para el cuidado de tu mascota</p>
+                <span class="btn btn-sm mt-2" style="background-color: #E8833A; color: white;">Ir a la tienda</span>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-3">
+        <a href="http://localhost:5173/casos-exito" target="_blank" class="text-decoration-none">
+            <div class="card h-100 border-0 shadow-sm p-4"
+                 style="border-radius: 16px; transition: 0.2s;"
+                 onmouseover="this.style.transform='translateY(-5px)'"
+                 onmouseout="this.style.transform='translateY(0)'">
+                <div style="font-size: 50px;">❤️</div>
+                <h5 class="fw-bold mt-3" style="color: #C62828;">Casos de Éxito</h5>
+                <p class="text-muted small">Historias de animales que encontraron un hogar</p>
+                <span class="btn btn-sm mt-2" style="background-color: #C62828; color: white;">Ver historias</span>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<!-- PANEL ADMINISTRATIVO -->
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4" style="border-radius: 16px; background: linear-gradient(135deg, #1B5E20, #2E7D32);">
+            <h5 class="fw-bold text-white mb-3">⚕️ Panel Administrativo</h5>
+            <p class="text-white-50 small">Acceso exclusivo para veterinarios y administradores del sistema</p>
+            <div class="d-flex gap-2 flex-wrap mt-3">
+                <a href="/admin/" class="btn btn-light btn-sm">🔐 Panel Admin</a>
+                <a href="/adopciones/" class="btn btn-outline-light btn-sm">🐾 Animales</a>
+                <a href="/adopciones/citas/" class="btn btn-outline-light btn-sm">📅 Citas</a>
+                <a href="/adopciones/vacunas/" class="btn btn-outline-light btn-sm">💉 Vacunas</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4" style="border-radius: 16px; background: linear-gradient(135deg, #4A2575, #6B3FA0);">
+            <h5 class="fw-bold text-white mb-3">🌐 API REST</h5>
+            <p class="text-white-50 small">Endpoints JSON disponibles para el frontend React</p>
+            <div class="d-flex gap-2 flex-wrap mt-3">
+                <a href="/adopciones/api/" class="btn btn-light btn-sm">Animales</a>
+                <a href="/adopciones/api/citas/" class="btn btn-outline-light btn-sm">Citas</a>
+                <a href="/adopciones/api/vacunas/" class="btn btn-outline-light btn-sm">Vacunas</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- INFO DEL PROYECTO -->
+<div class="text-center py-3 text-muted small">
+    <p class="mb-1">🎓 Universidad Nacional de San Agustín · Ingeniería de Sistemas</p>
+    <p class="mb-1">Desarrollo de Aplicaciones Web · Prof. Carlo Corrales Delgado · 2026</p>
+    <p class="mb-0">
+        <a href="https://github.com/DianaLdc/daw-proyecto-final" target="_blank" class="text-muted">
+            🔗 github.com/DianaLdc/daw-proyecto-final
+        </a>
+    </p>
+</div>
+
+{% endblock %}
