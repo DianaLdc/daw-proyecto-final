@@ -369,3 +369,8 @@ def api_solicitud_adopcion(request):
             'solicitud_id': solicitud.id
         })
     return JsonResponse({'error': 'Metodo no permitido'}, status=405)
+
+    # ==================== BIENVENIDA ====================
+
+def bienvenida(request):
+    return render(request, 'adopciones/bienvenida.html')
